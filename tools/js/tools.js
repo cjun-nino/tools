@@ -75,5 +75,11 @@ function mosaicParmesList(obj) {
  */
 function regExpGroup() {
 	// 汉字
-	this.isChinese = /^[\u4e00-\u9fa5]{0,}$/;
+    this.isChinese = /^[\u4e00-\u9fa5]{0,}$/;
+    // 邮箱
+    this.isEmail = /^\w+([-+.]\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$/;
+    // 18位身份证号码
+    this.isCard = /^((\d{18})|([0-9x]{18})|([0-9X]{18}))$/;
+    // IP地址(由 @飞龙三少 提供)
+    this.isIPAddress = /((?:(?:25[0-5]|2[0-4]\\d|[01]?\\d?\\d)\\.){3}(?:25[0-5]|2[0-4]\\d|[01]?\\d?\\d))/;
 }
