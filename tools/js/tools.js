@@ -20,8 +20,8 @@ function getUrlParame(key) {
 /**
  * getAfterUpdateUrl 根据当前URL与新的参数列表形成新的URL - 方法组
  * @data 2020-03-04 
- * @param str
- * @return {Object}
+ * @param str, {Object}
+ * @return str
  * @author cjun.nino@gmail.com
  */
 
@@ -68,6 +68,40 @@ function mosaicParmesList(obj) {
 	return params.join('&');
 }
 
+/**
+ * deleteUrlParme 删除一个url中的某一个字段
+ * @data 2020-03-11 
+ * @param str, str
+ * @return str
+ * @author cjun.nino@gmail.com
+ */
+function deleteUrlParme(url, ref) {
+    var str = "";
+
+    if (url.indexOf('?') != -1)
+        str = url.substr(url.indexOf('?') + 1);
+    else
+        return url;
+    var arr = [];
+    var returnurl = "";
+    var setparam = "";
+    if (str.indexOf('&') != -1) {
+        arr = str.split('&');
+        for (var i = 0; i < arr.length; i++) {
+            if (arr[i].split('=')[0] != ref) {
+                returnurl = returnurl + arr[i].split('=')[0] + "=" + arr[i].split('=')[1] + "&";
+            }
+        }
+        return url.substr(0, url.indexOf('?')) + "?" + returnurl.substr(0, returnurl.length - 1);
+    }
+    else {
+        arr = str.split('=');
+        if (arr[0] == ref)
+            return url.substr(0, url.indexOf('?'));
+        else
+            return url;
+    }
+}
 /**
  * 正则表达式组
  * @data 2020-03-04 
