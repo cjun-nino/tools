@@ -6,15 +6,15 @@
  * @author cjun.nino@gmail.com
  */
 function getUrlParame(key) {
-	var query = window.location.search.substring(1);
-	var vars = query.split("&");
-	for (var i = 0; i < vars.length; i++) {
-		var pair = vars[i].split("=");
-		if (pair[0] == key) {
-			return pair[1];
-		}
-	}
-	return (false);
+    var query = window.location.search.substring(1);
+    var vars = query.split("&");
+    for (var i = 0; i < vars.length; i++) {
+        var pair = vars[i].split("=");
+        if (pair[0] == key) {
+            return pair[1];
+        }
+    }
+    return (false);
 }
 
 /**
@@ -27,45 +27,45 @@ function getUrlParame(key) {
 
 // 传入参数，防止参数丢失
 function getAfterUpdateUrl(baseUrl, parmesNew) {
-	var parmesOldList = getParmesList(window.location.search);
-	var url = baseUrl;
-	var baseUrlArr = url.split("?");
-	if (baseUrlArr.length > 0) {
-		url = baseUrlArr[0];
-	}
-	var paramsUrlList = {};
-	if (baseUrlArr.length >= 2) {
-		paramsUrlList = getParmesList("?" + baseUrlArr[1]);
-	}
-	var parmesNewList = Object.assign(parmesOldList, paramsUrlList, parmesNew);
-	return url + "?" + mosaicParmesList(parmesNewList);
+    var parmesOldList = getParmesList(window.location.search);
+    var url = baseUrl;
+    var baseUrlArr = url.split("?");
+    if (baseUrlArr.length > 0) {
+        url = baseUrlArr[0];
+    }
+    var paramsUrlList = {};
+    if (baseUrlArr.length >= 2) {
+        paramsUrlList = getParmesList("?" + baseUrlArr[1]);
+    }
+    var parmesNewList = Object.assign(parmesOldList, paramsUrlList, parmesNew);
+    return url + "?" + mosaicParmesList(parmesNewList);
 }
 
 //获取URL中的参数列表
 function getParmesList(parmesOld) {
-	var url = parmesOld;
-	var theRequest = new Object();
-	if (url.indexOf("?") != -1) {
-		var str = url.substr(1);
-		strs = str.split("&");
-		for (var i = 0; i < strs.length; i++) {
-			theRequest[strs[i].split("=")[0]] = (strs[i].split("=")[1]);
-		}
-	}
-	return theRequest;
+    var url = parmesOld;
+    var theRequest = new Object();
+    if (url.indexOf("?") != -1) {
+        var str = url.substr(1);
+        strs = str.split("&");
+        for (var i = 0; i < strs.length; i++) {
+            theRequest[strs[i].split("=")[0]] = (strs[i].split("=")[1]);
+        }
+    }
+    return theRequest;
 }
 
 // 拼接参数列表
 function mosaicParmesList(obj) {
-	var params = [];
-	Object.keys(obj).forEach((key) => {
-		var value = obj[key];
-		if (typeof value === 'undefined') {
-			value = '';
-		}
-		params.push([key, encodeURIComponent(value)].join('='));
-	})
-	return params.join('&');
+    var params = [];
+    Object.keys(obj).forEach((key) => {
+        var value = obj[key];
+        if (typeof value === 'undefined') {
+            value = '';
+        }
+        params.push([key, encodeURIComponent(value)].join('='));
+    })
+    return params.join('&');
 }
 
 /**
@@ -108,7 +108,7 @@ function deleteUrlParme(url, ref) {
  * @author cjun.nino@gmail.com
  */
 function regExpGroup() {
-	// 汉字
+    // 汉字
     this.isChinese = /^[\u4e00-\u9fa5]{0,}$/;
     // 邮箱
     this.isEmail = /^\w+([-+.]\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$/;
