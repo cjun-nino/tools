@@ -1,6 +1,9 @@
 # tools
 随时添加的比较实用的方法汇总
 
+## 4.14
+ - iosInputFocus：解决IOS调起弹窗后元素焦点错位的问题
+
 ## 3.11
  - deleteUrlParme: 删除url中某一个字段
 
