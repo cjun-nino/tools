@@ -1,11 +1,11 @@
 /**
- * getUrlParame 获取当前URL中某一项参数的值
+ * getUrlParme 获取当前URL中某一项参数的值
  * @data 2020-03-04 
  * @param str
  * @return str
  * @author cjun.nino@gmail.com
  */
-function getUrlParame(key) {
+function getUrlParme(key) {
     var query = window.location.search.substring(1);
     var vars = query.split("&");
     for (var i = 0; i < vars.length; i++) {
