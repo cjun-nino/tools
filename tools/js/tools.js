@@ -117,3 +117,31 @@ function regExpGroup() {
     // IP地址(由 @飞龙三少 提供)
     this.isIPAddress = /((?:(?:25[0-5]|2[0-4]\\d|[01]?\\d?\\d)\\.){3}(?:25[0-5]|2[0-4]\\d|[01]?\\d?\\d))/;
 }
+
+/**
+ * ios文本框获取焦点再失去焦点元素与实际位置不符的问题处理
+ * @data 2020-04-14 
+ * @author cjun.nino@gmail.com
+ */
+function iosInputFocus() {
+    var u = navigator.userAgent;
+    var flag;
+    var myFunction;
+    var isIOS = !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/);
+    if (isIOS) {
+        document.body.addEventListener('focusin', function () {
+            flag = true;
+            clearTimeout(myFunction);
+        });
+        document.body.addEventListener('focusout', function () {
+            flag = false;
+            if (!flag) {
+                myFunction = setTimeout(function () {
+                    window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
+                }, 200);
+            } else {
+                return
+            }
+        });
+    }
+}
