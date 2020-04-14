@@ -8,7 +8,7 @@
  - deleteUrlParme: 删除url中某一个字段
 
 ## 3.4
- - getUrlParame: 获取当前url的某一项参数的值
+ - getUrlParme: 获取当前url的某一项参数的值
  - getAfterUpdateUrl: 根据当前url与新的参数列表形成新的url地址 - 方法组
  - 正则组更新：
      - isChinese: 校验汉字
